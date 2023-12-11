@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  vars:
+    org_id: 1519337 # DEVWKS-2301
+    corp_name: "ACME Corp"
+  gather_facts: false
+  tasks:
+
+    - name: Get Organization Networks
+      cisco.meraki.networks_info:
+        organizationId: "{{ org_id }}"
+      register: network_list
+
+    - name: Print the list of networks
+      ansible.builtin.debug:
+        msg: "{{ network_list }}"
+    

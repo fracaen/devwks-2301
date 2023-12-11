@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  vars:
+    org_id: 1519337 # DEVWKS-2301
+    network_id: L_686235993220600530  # Pod 1 >> replace with your Pod number
+    corp_name: "ACME Corp"
+  gather_facts: false
+  tasks:
+
+    - name: Create corporate SSID
+      cisco.meraki.networks_wireless_ssids:
+        state: present
+        enabled: true
+        name: "{{corp_name}}"
+        networkId: "{{ network_id }}"
+        number: 0
+        ipAssignmentMode: Bridge mode
+        defaultVlanId: 100
+        useVlanTagging: true
+        authMode: "8021x-radius"
+        wpaEncryptionMode: WPA2 only
+        radiusServers: 
+          - one:
+            host: "1.2.3.4"
+            port: 1812
+            secret: SuperSecretPassword
+    
