@@ -1,0 +1,25 @@
+- name: Configure L2 interfaces
+  hosts: cat_switches
+  gather_facts: no
+  collections:
+    - cisco.ios
+  tasks:
+
+    - name: configure AP interfaces
+      ios_l2_interfaces:
+        config: "{{ AP_intf_conf }}"
+        state: replaced
+      loop: "{{ AP_intfs }}"
+
+    - name: configure LP interfaces
+      ios_l2_interfaces:
+        config: "{{ LP_intf_conf }}"
+        state: replaced
+      loop: "{{ LP_intfs }}"
+
+    - name: configure POS interfaces
+      ios_l2_interfaces:
+        config: "{{ POS_intf_conf }}"
+        state: replaced
+      loop: "{{ POS_intfs }}"
+

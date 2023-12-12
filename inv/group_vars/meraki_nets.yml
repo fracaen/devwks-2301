@@ -1,0 +1,6 @@
+org_id: 1519337
+corp_name: ACME Corp
+radius_servers:
+  - host: "1.2.3.4"
+    port: 1812
+    secret: SuperSecretPassword
