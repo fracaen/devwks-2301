@@ -4,3 +4,6 @@ radius_servers:
   - host: "{{radius_server1}}"
     port: 1812
     secret: SuperSecretPassword
+  - host: "{{radius_server2}}"
+    port: 1812
+    secret: SuperSecretPassword
