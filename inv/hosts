@@ -2,8 +2,7 @@ all:
   children:
     meraki_nets:
       hosts:
-        pod1:
-        pod2:
+        mypod:
     ise_servers:
       hosts:
         ise1:

@@ -1,4 +1,4 @@
-ise_hostname: 172.30.101.11
+ise_hostname: "{{radius_server1}}"
 ise_username: demo
 ise_password: demo
 ise_version: 3.1_Patch_1
