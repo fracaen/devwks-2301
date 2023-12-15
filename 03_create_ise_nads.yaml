@@ -2,11 +2,6 @@
 - hosts: ise_servers
   gather_facts: no
   vars:
-    ise_hostname: 172.30.101.11
-    ise_username: demo
-    ise_password: demo
-    ise_version: 3.1_Patch_1
-    ise_verify: false
     pod_number: 1
 
   tasks:

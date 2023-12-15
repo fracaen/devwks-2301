@@ -1,0 +1,11 @@
+all:
+  children:
+    meraki_nets:
+      hosts:
+        mypod:
+    ise_servers:
+      hosts:
+        ise1:
+    cat_switches:
+      hosts:
+        c9000v-sw1:

@@ -1,0 +1,11 @@
+- name: Configure VLANs
+  hosts: cat_switches
+  gather_facts: no
+  collections:
+    - cisco.ios
+  tasks:
+
+    - name: add vlans
+      ios_vlans:
+        config: "{{ vlans }}"
+        state: merged

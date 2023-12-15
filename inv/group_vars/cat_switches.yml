@@ -1,0 +1,56 @@
+#################################
+#     CONNECTION VARIABLES      #
+#################################
+
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.ios.ios
+ansible_become: yes
+ansible_become_method: enable
+ansible_user: cisco
+ansible_ssh_password: "{{ lookup('env', 'SSHPASS') }}"
+ansible_become_password: "{{ lookup('env', 'BECOMEPASS') }}"
+
+#################################
+#       VLAN VARIABLES          #
+#################################
+
+vlans:
+  - name: Management
+    vlan_id: 10
+  - name: LP
+    vlan_id: 110
+  - name: Wireless-mgmt
+    vlan_id: 120
+  - name: Voice
+    vlan_id: 200
+  - name: POS-StoreVLAN
+    vlan_id: 510
+  - name: Kiosk-network
+    vlan_id: 550
+  - name: Cust-WIFI
+    vlan_id: 888
+
+#################################
+#       L2 INTF VARIABLES        #
+#################################
+
+AP_intf_conf:
+  - name: "{{ item }}"
+    mode: trunk
+    trunk:
+      allowed_vlans: 120,550,888
+      native_vlan: 120
+
+LP_intf_conf:
+  - name: "{{ item }}"
+    mode: access
+    access:
+      vlan: 110
+
+POS_intf_conf:
+  - name: "{{ item }}"
+    mode: access
+    access:
+      vlan: 510
+    voice:
+      vlan: 200
