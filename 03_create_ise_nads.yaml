@@ -29,7 +29,7 @@
       ise_verify: "{{ ise_verify }}"
       ise_version: "{{ise_version}}"
       state: present
-      name: Pod-{{ pod_number }} NAD
+      name: Pod-{{ pod_number }}-NAD
       authenticationSettings:
         networkProtocol: RADIUS
         radiusSharedSecret: SuperSecretRadiusSharedSecret
