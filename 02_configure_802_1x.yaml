@@ -1,7 +1,6 @@
 ---
-- name: Configure Meraki Dot1x Play
-  hosts: pod1 # change pod number here
-  connection: local
+- name: Configure Meraki SSID with Dot1x
+  hosts: localhost
   gather_facts: false
   tasks:
 

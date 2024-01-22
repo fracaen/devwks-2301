@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: List all Networks in the Meraki Organization
+  hosts: localhost
   gather_facts: false
   tasks:
 

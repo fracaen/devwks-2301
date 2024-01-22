@@ -1,6 +1,6 @@
 - name: Configure VLANs
   hosts: cat_switches
-  gather_facts: no
+  gather_facts: false
   collections:
     - cisco.ios
   tasks:

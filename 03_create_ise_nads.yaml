@@ -1,6 +1,7 @@
 ---
-- hosts: ise_servers
-  gather_facts: no
+- name: List, Create and Verify ISE Network Devices
+  hosts: ise_servers
+  gather_facts: false
 
   tasks:
 
