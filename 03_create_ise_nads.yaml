@@ -1,8 +1,6 @@
 ---
 - hosts: ise_servers
   gather_facts: no
-  vars:
-    pod_number: 1
 
   tasks:
 

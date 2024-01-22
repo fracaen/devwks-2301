@@ -1,5 +1,5 @@
 ise_hostname: "{{radius_server1}}"
-ise_username: demo
-ise_password: demo
-ise_version: 3.1_Patch_1
+ise_username: admin
+ise_password: C1sco12345
+ise_version: 3.2_beta
 ise_verify: false
