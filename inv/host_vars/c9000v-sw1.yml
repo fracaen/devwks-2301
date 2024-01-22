@@ -1,11 +1,11 @@
 ansible_host: 172.18.2.4
 
 AP_intfs:
-  - GigabitEthernet1/0/1
-  - GigabitEthernet1/0/2
-LP_intfs:
   - GigabitEthernet1/0/3
   - GigabitEthernet1/0/4
-POS_intfs:
+LP_intfs:
   - GigabitEthernet1/0/5
   - GigabitEthernet1/0/6
+POS_intfs:
+  - GigabitEthernet1/0/7
+  - GigabitEthernet1/0/8

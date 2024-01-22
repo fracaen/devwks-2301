@@ -6,9 +6,9 @@ ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: cisco.ios.ios
 ansible_become: yes
 ansible_become_method: enable
-ansible_user: cisco
-ansible_ssh_password: "{{ lookup('env', 'SSHPASS') }}"
-ansible_become_password: "{{ lookup('env', 'BECOMEPASS') }}"
+ansible_user: admin
+ansible_ssh_password: C1sco12345
+ansible_become_password: C1sco12345
 
 #################################
 #       VLAN VARIABLES          #
