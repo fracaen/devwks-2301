@@ -1,6 +1,6 @@
 - name: Configure Dot1x Auth
   hosts: cat_switches
-  gather_facts: no
+  gather_facts: false
   collections:
     - cisco.ios
   tasks:
@@ -11,7 +11,7 @@
           - dot1x system-auth-control
           - aaa new-model
           - aaa authentication dot1x default group radius
-          - ip radius source-interface GigabitEthernet0/0
+          - ip radius source-interface GigabitEthernet1/0/1
 
     - name: Config Radius
       ios_config:

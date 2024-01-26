@@ -3,3 +3,4 @@
 .vscode
 ansible.cfg
 .log
+API_keys.txt
