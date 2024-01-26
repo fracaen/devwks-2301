@@ -1,6 +1,5 @@
 .DS_Store
 .python_version
 .vscode
-ansible.cfg
 .log
 API_keys.txt
