@@ -2,12 +2,11 @@
 - name: Configure Dot1x Auth
   hosts: cat_switches
   gather_facts: false
-  collections:
-    - cisco.ios
+
   tasks:
 
     - name: Config AAA
-      ios_config:
+      cisco.ios.ios_config:
         lines:
           - dot1x system-auth-control
           - aaa new-model
@@ -15,14 +14,14 @@
           - ip radius source-interface GigabitEthernet1/0/1
 
     - name: Config Radius
-      ios_config:
+      cisco.ios.ios_config:
         lines:
-          - address ipv4 {{radius_server1}}
+          - address ipv4 {{ radius_server1 }}
         parents: radius server ise1
 
     - name: Config infs
-      ios_config:
+      cisco.ios.ios_config:
         lines:
           - dot1x port-control auto
         parents: "interface {{ item }}"
-      loop: "{{LP_intfs + POS_intfs}}"
+      loop: "{{ LP_intfs + POS_intfs }}"

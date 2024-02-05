@@ -8,7 +8,7 @@
       cisco.meraki.networks_wireless_ssids:
         state: present
         enabled: true
-        name: "{{corp_name}}"
+        name: "{{ corp_name }}"
         networkId: "{{ network_id }}"
         number: 0
         ipAssignmentMode: Bridge mode
@@ -16,5 +16,4 @@
         useVlanTagging: true
         authMode: "8021x-radius"
         wpaEncryptionMode: WPA2 only
-        radiusServers: "{{radius_servers}}"
-    
+        radiusServers: "{{ radius_servers }}"

@@ -5,49 +5,49 @@
 
   tasks:
 
-  - name: Get all Network Devices - before
-    cisco.ise.network_device_info:
-      ise_hostname: "{{ise_hostname}}"
-      ise_username: "{{ise_username}}"
-      ise_password: "{{ise_password}}"
-      ise_verify: "{{ise_verify}}"
-      ise_version: "{{ise_version}}"
-      page: 1
-      size: 100
-    register: result
+    - name: Get all Network Devices - before
+      cisco.ise.network_device_info:
+        ise_hostname: "{{ ise_hostname }}"
+        ise_username: "{{ ise_username }}"
+        ise_password: "{{ ise_password }}"
+        ise_verify: "{{ ise_verify }}"
+        ise_version: "{{ ise_version }}"
+        page: 1
+        size: 100
+      register: result
 
-  - name: Show result
-    ansible.builtin.debug:
-      msg: "{{ result }}"
+    - name: Show result
+      ansible.builtin.debug:
+        msg: "{{ result }}"
 
-  - name: Add NAD
-    cisco.ise.network_device:
-      ise_hostname: "{{ ise_hostname }}"
-      ise_username: "{{ ise_username }}"
-      ise_password: "{{ ise_password }}"
-      ise_verify: "{{ ise_verify }}"
-      ise_version: "{{ise_version}}"
-      state: present
-      name: Pod-{{ pod_number }}-NAD
-      authenticationSettings:
-        networkProtocol: RADIUS
-        radiusSharedSecret: SuperSecretRadiusSharedSecret
-        # enabled: true
-      NetworkDeviceIPList:
-        - ipaddress: 10.7.{{ pod_number }}.0
-          mask: 24
+    - name: Add NAD
+      cisco.ise.network_device:
+        ise_hostname: "{{ ise_hostname }}"
+        ise_username: "{{ ise_username }}"
+        ise_password: "{{ ise_password }}"
+        ise_verify: "{{ ise_verify }}"
+        ise_version: "{{ ise_version }}"
+        state: present
+        name: Pod-{{ pod_number }}-NAD
+        authenticationSettings:
+          networkProtocol: RADIUS
+          radiusSharedSecret: SuperSecretRadiusSharedSecret
+          # enabled: true
+        NetworkDeviceIPList:
+          - ipaddress: 10.7.{{ pod_number }}.0
+            mask: 24
 
-  - name: Get all Network Devices - after
-    cisco.ise.network_device_info:
-      ise_hostname: "{{ise_hostname}}"
-      ise_username: "{{ise_username}}"
-      ise_password: "{{ise_password}}"
-      ise_verify: "{{ise_verify}}"
-      ise_version: "{{ise_version}}"
-      page: 1
-      size: 100
-    register: result
+    - name: Get all Network Devices - after
+      cisco.ise.network_device_info:
+        ise_hostname: "{{ ise_hostname }}"
+        ise_username: "{{ ise_username }}"
+        ise_password: "{{ ise_password }}"
+        ise_verify: "{{ ise_verify }}"
+        ise_version: "{{ ise_version }}"
+        page: 1
+        size: 100
+      register: result
 
-  - name: Show result
-    ansible.builtin.debug:
-      msg: "{{ result }}"
+    - name: Show result
+      ansible.builtin.debug:
+        msg: "{{ result }}"
