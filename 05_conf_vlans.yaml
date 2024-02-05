@@ -1,3 +1,4 @@
+---
 - name: Configure VLANs
   hosts: cat_switches
   gather_facts: false

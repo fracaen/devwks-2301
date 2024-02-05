@@ -10,3 +10,4 @@
     - name: Show result
       ansible.builtin.debug:
         msg: "{{ result }}"
+        
