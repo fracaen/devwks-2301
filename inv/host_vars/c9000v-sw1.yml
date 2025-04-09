@@ -1,4 +1,4 @@
-ansible_host: ### PUT YOUR SWITCH IP HERE ###
+ansible_host: "198.18.1{{pod_number}}.2"
 
 AP_intfs:
   - GigabitEthernet1/0/3
