@@ -34,7 +34,7 @@
           radiusSharedSecret: SuperSecretRadiusSharedSecret
           # enabled: true
         NetworkDeviceIPList:
-          - ipaddress: 10.7.{{ pod_number }}.0
+          - ipaddress: 198.18.1{{ pod_number }}.0
             mask: 24
 
     - name: Get all Network Devices - after

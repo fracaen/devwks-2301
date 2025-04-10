@@ -1,0 +1,49 @@
+---
+- name: Configure VLANs
+  hosts: cat_switches
+  gather_facts: false
+  tasks:
+
+    - name: Add vlans
+      cisco.ios.ios_vlans:
+        config: "{{ vlans }}"
+        state: merged
+
+    - name: Configure AP interfaces
+      cisco.ios.ios_l2_interfaces:
+        config: "{{ AP_intf_conf }}"
+        state: replaced
+      loop: "{{ AP_intfs }}"
+
+    - name: Configure LP interfaces
+      cisco.ios.ios_l2_interfaces:
+        config: "{{ LP_intf_conf }}"
+        state: replaced
+      loop: "{{ LP_intfs }}"
+
+    - name: Configure POS interfaces
+      cisco.ios.ios_l2_interfaces:
+        config: "{{ POS_intf_conf }}"
+        state: replaced
+      loop: "{{ POS_intfs }}"
+
+    - name: Config AAA
+      cisco.ios.ios_config:
+        lines:
+          - dot1x system-auth-control
+          - aaa new-model
+          - aaa authentication dot1x default group radius
+          - ip radius source-interface GigabitEthernet1/0/1
+
+    - name: Config Radius
+      cisco.ios.ios_config:
+        lines:
+          - address ipv4 {{ radius_server1 }}
+        parents: radius server ise1
+
+    - name: Config infs
+      cisco.ios.ios_config:
+        lines:
+          - dot1x port-control auto
+        parents: "interface {{ item }}"
+      loop: "{{ LP_intfs + POS_intfs }}"

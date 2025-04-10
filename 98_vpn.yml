@@ -5,7 +5,7 @@
 
   vars_prompt:
     - name: pod_num
-      prompt: What is your assigned pod number?
+      prompt: What is your assigned lab number?
       private: no
 
   tasks:
