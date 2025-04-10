@@ -1,5 +1,5 @@
 ---
-- name: Configure VLANs
+- name: Configure Switch Dot1x
   hosts: cat_switches
   gather_facts: false
   tasks:

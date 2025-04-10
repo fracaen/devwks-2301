@@ -3,15 +3,19 @@
   hosts: ise_servers
   gather_facts: false
 
+  vars:
+    ise_login: &ise_login
+      ise_hostname: "{{ ise_hostname }}"
+      ise_username: "{{ ise_username }}"
+      ise_password: "{{ ise_password }}"
+      ise_verify: "{{ ise_verify }}"
+      ise_version: "{{ ise_version }}"
+
   tasks:
 
     - name: Get all Network Devices - before
       cisco.ise.network_device_info:
-        ise_hostname: "{{ ise_hostname }}"
-        ise_username: "{{ ise_username }}"
-        ise_password: "{{ ise_password }}"
-        ise_verify: "{{ ise_verify }}"
-        ise_version: "{{ ise_version }}"
+        <<: *ise_login
         page: 1
         size: 100
       register: result
@@ -22,11 +26,7 @@
 
     - name: Add NAD
       cisco.ise.network_device:
-        ise_hostname: "{{ ise_hostname }}"
-        ise_username: "{{ ise_username }}"
-        ise_password: "{{ ise_password }}"
-        ise_verify: "{{ ise_verify }}"
-        ise_version: "{{ ise_version }}"
+        <<: *ise_login
         state: present
         name: Pod-{{ pod_number }}-NAD
         authenticationSettings:
@@ -39,11 +39,7 @@
 
     - name: Get all Network Devices - after
       cisco.ise.network_device_info:
-        ise_hostname: "{{ ise_hostname }}"
-        ise_username: "{{ ise_username }}"
-        ise_password: "{{ ise_password }}"
-        ise_verify: "{{ ise_verify }}"
-        ise_version: "{{ ise_version }}"
+        <<: *ise_login
         page: 1
         size: 100
       register: result
