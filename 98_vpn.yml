@@ -39,7 +39,7 @@
         api_key: "{{ pod_line[5] }}"
 
     - name: Export Meraki API Key
-      shell: "export 'MERAKI_DASHBOARD_API_KEY={{api_key}}'"
+      shell: "echo 'export MERAKI_DASHBOARD_API_KEY={{api_key}}' >> ~/.bashrc"
 
     - name: Print User Message 
       debug:
